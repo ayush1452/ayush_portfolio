@@ -1,5 +1,5 @@
 "use client";
-import { FaReact, FaDocker, FaPython, FaJava } from 'react-icons/fa';
+import { FaReact, FaDocker, FaPython, FaJava, FaDatabase, FaCloud, FaCloudUploadAlt, FaNetworkWired, FaCogs, FaSyncAlt, FaTools, FaServer, FaCode, FaLaptopCode, FaLayerGroup, FaGlobe, FaBrain, FaRobot, FaDev } from 'react-icons/fa';
 
 import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
@@ -9,38 +9,69 @@ const services = [
     num: "01",
     title: "Backend Development",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
+      "I have extensive experience in designing and developing backend systems that are scalable and efficient. My work primarily involves refactoring legacy systems, creating new protocols for data flow, and deploying applications on hybrid cloud environments. I ensure robust security and seamless data integration across multiple platforms.",
     href: "",
-    techStack: ["Java", "Spring Boot", "MySQL", "Docker"],
+    techStack: ["Java", "Python", "Spring Boot", "Node.js", "kafka", "Gradle", "MySQL", "PostgreSQL", "MongoDB", "Redis", "ELK Stack", "REST APIs", "OAuth 2.0", ],
+    icon: (
+        <div className="flex gap-2">
+          <FaJava />
+          <FaCode />
+        </div>
+      ),
   },
   {
     num: "02",
-    title: "Full Stack Web Development",
+    title: "DevOps and Automation",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
+      "I streamline software delivery processes by setting up CI/CD pipelines and automating deployment procedures. My expertise lies in optimizing cloud deployments and ensuring seamless integration across development and operations teams.",
     href: "",
+    techStack: ["Git", "GitHub Actions", "GitLab CI/CD", "Docker", "OpenShift", "Jenkins", "AWS", "Terraform", "Kubernetes", "Ansible", "DataDog", "JFrog Artifactory"],
+    icon: (
+        <div className="flex gap-2">
+          <FaDocker />
+        </div>
+      ),
   },
   {
     num: "03",
-    title: "DevOps and Automation",
+    title: "Cloud Computing",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
+      "I specialize in cloud architecture, migration, and optimization. My experience includes designing cloud-native applications and managing infrastructure across multi-cloud environments, ensuring high availability and cost-efficiency.",
     href: "",
-    icon: <FaDocker />,
+    techStack: ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "AWS CloudFormation", "OpenShift", "JFrog", "Jenkins", "AWS Lambda", "AWS S3", "ELK Stack (Elasticsearch, Logstash, Kibana)" ],
+    icon: (
+        <div className="flex gap-2">
+          <FaCloud />
+        </div>
+      ),
   },
   {
     num: "04",
     title: "GenAI and LLM",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
+      "Leveraging the latest advancements in AI, I have experience in developing enterprise-grade GenAI solutions that empower intelligent decision-making. My work involves integrating large language models and advanced machine learning techniques into scalable applications.",
     href: "",
+    techStack: ["Python", "TensorFlow", "Hugging Face", "PyTorch", "OpenAI", "LangChain", "Qdrant", "LlamaIndex", "Streamlit", "FastAPI", "Elasticsearch", "AWS Sagemaker", "Kubeflow", "Prometheus and Grafana"],
+    icon: (
+        <div className="flex gap-2">
+          <FaRobot />
+          <FaPython />
+        </div>
+      ),
   },
   {
     num: "05",
-    title: "Cloud Computing",
+    title: "Full Stack Web Development",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
+      "With a strong background in full-stack development, I have built web applications from the ground up, managing both the frontend and backend aspects. My work spans across various industries, including finance and retail, where I’ve created responsive, high-performance web applications.",
     href: "",
+    techStack: ["React", "TypeScript", "JavaScript", "Next.js", "HTML5", "CSS3", "SASS", "Flask", "Python", "SQL", "PostgreSQL", "Swagger", "JUnit", "Mockito", "Jira"],
+    icon: (
+        <div className="flex gap-2">
+          <FaLaptopCode />
+          <FaReact />
+        </div>
+      ),
   },
 ];
 
@@ -67,14 +98,14 @@ const Services = () => {
                 {/* top */}
                 <div className="w-full flex justify-between items-center">
                 <div className="flex items-center gap-3">
-                <div className="text-8xl text-white group-hover:text-accent group-hover:translate-x-2 transition-all duration-500">{service.icon}</div>
+                <div className="text-7xl text-white group-hover:text-accent group-hover:translate-x-2 transition-all duration-500">{service.icon}</div>
                   <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">
                     {service.num}
                   </div>
                   </div>
                   <Link
                     href={service.href}
-                    className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
+                    className="w-[65px] h-[65px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                   >
                     <BsArrowDownRight className="text-primary text-3xl" />
                   </Link>
