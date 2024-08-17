@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
-//import { Swiper, SwiperSlide } from "swiper/react";
-//import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
-//import { BsArrowUpRight, BsGithub } from "react-icons/bs";
+import { BsArrowUpRight, BsGithub } from "react-icons/bs";
 
 import {
     Tooltip,
@@ -56,7 +56,22 @@ const projects = [
   ];
 
 const Services = () => {
-    return <div>work page</div>;
+    const [project, setProject] = useState(projects[0]);
+    return (
+        <motion.section
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+      }}
+      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+    >
+        
+
+        </motion.section>
+    );
 };
+
+
 
 export default Services;
