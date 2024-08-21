@@ -44,7 +44,7 @@ const projects = [
     },
     {
       num: "03",
-      category: "frontend",
+      category: "frontend project",
       title: "project 3",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate magnam modi.",
