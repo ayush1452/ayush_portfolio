@@ -37,7 +37,7 @@ const projects = [
       title: "project 2",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate magnam modi.",
-      stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Node.js" }],
+      stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
       image: "/assets/work/thumb2.png",
       live: "",
       github: "",
