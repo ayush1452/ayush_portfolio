@@ -40,7 +40,7 @@ const projects = [
       stack: [{ name: "Html 5" }, { name: "CSS3" }, { name: "Javascript" }],
       image: "/assets/work/thumb.png",
       live: "",
-      github: "",
+      github: "https://github.com/ayush1452/error_page_404_with_hoverEffect",
     },
   ];
 
