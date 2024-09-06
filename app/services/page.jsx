@@ -98,24 +98,24 @@ const Services = () => {
                 {/* top */}
                 <div className="w-full flex justify-between items-center">
                 <div className="flex items-center gap-3">
-                <div className="text-7xl text-white group-hover:text-accent group-hover:translate-x-2 transition-all duration-500">{service.icon}</div>
-                  <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">
+                <div className="text-6xl text-white group-hover:text-accent group-hover:translate-x-2 transition-all duration-500">{service.icon}</div>
+                  <div className="text-4xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">
                     {service.num}
                   </div>
                   </div>
                   <Link
                     href={service.href}
-                    className="w-[65px] h-[65px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
+                    className="w-[55px] h-[55px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                   >
-                    <BsArrowDownRight className="text-primary text-3xl" />
+                    <BsArrowDownRight className="text-primary text-2xl" />
                   </Link>
                 </div>
                 {/* title  */}
-                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">
+                <h2 className="text-[36px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">
                 {service.title}
                 </h2>
                 {/* description */}
-                <p className="text-white/60">{service.description}</p>
+                <p className="text-white/60 text-sm">{service.description}</p>
                 {/* tech stack */}
                 {service.techStack && service.techStack.length > 0 && (
                 <div className="flex flex-wrap items-center gap-3">
@@ -123,7 +123,7 @@ const Services = () => {
                   {service.techStack.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 rounded-full bg-white text-black text-sm font-medium shadow-md"
+                      className="px-2 py-1 rounded-full bg-white text-black text-xs font-medium shadow-md"
                     >
                       {tech}
                     </span>
