@@ -94,10 +94,10 @@ const Contact = () => {
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
               onSubmit={handleSubmit}
             >
-              <h3 className="text-4xl text-accent">Let's work together</h3>
+              <h3 className="text-4xl text-accent">Let&#39;s work together</h3>
               <p className="text-white/60">
                 Get in touch with me for collaborations, inquiries, or any
-                questions—let's work together to bring your ideas to life!
+                questions—let&#39;s work together to bring your ideas to life!
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input
