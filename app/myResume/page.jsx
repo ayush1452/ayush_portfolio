@@ -15,14 +15,14 @@ import {
   FaCloud,
   FaAngular,
 } from "react-icons/fa";
-
+import { FaArrowRight } from "react-icons/fa";
 import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
-
+import Link from "next/link";
 // about data
 const about = {
     title: "About me",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+      "I am Ayush Sharma, a passionate software developer specializing in backend and full-stack development, committed to building scalable, efficient, and secure solutions.",
     info: [
       {
         fieldName: "Name",
@@ -37,8 +37,8 @@ const about = {
         fieldValue: "3+ Years",
       },
       {
-        fieldName: "Skype",
-        fieldValue: "luke.01",
+        fieldName: "GitHub",
+        fieldValue: "ayush1452",
       },
       {
         fieldName: "Nationality",
@@ -59,42 +59,27 @@ const about = {
     ],
   };
 
-// experiment data
+// experience data
 const experience = {
     icon: "/assets/resume/badge.svg",
     title: "My experience",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+      "I have cultivated a robust software development career with a focus on backend development, cloud-based solutions, and full-stack engineering. My experience spans across various industries, allowing me to contribute to diverse projects, from developing scalable applications to enhancing cloud deployments.",
     items: [
       {
-        company: "Tech Solutions Inc.",
-        position: "Full Stack Developer",
-        duration: "2022 - Present",
+        company: "IBM",
+        position: "Software Developer",
+        duration: "July 2023 - Present",
       },
       {
-        company: "Web Design Studio",
-        position: "Front-End Developer Intern",
-        duration: "Summer 2021",
+        company: "AdSynergy",
+        position: "Software Developer (internship)",
+        duration: "January 2021 - December 2021",
       },
       {
-        company: "E-commerce Startup",
-        position: "Freelance Web Developer",
-        duration: "2020 - 2021",
-      },
-      {
-        company: "Tech Academy",
-        position: "Teaching Assistant",
-        duration: "2019 - 2020",
-      },
-      {
-        company: "Digital Agency",
-        position: "UI/UX Designer",
-        duration: "2018 - 2019",
-      },
-      {
-        company: "Software Development Firm",
-        position: "Junior Developer",
-        duration: "2017 - 2018",
+        company: "Masks Unlimited",
+        position: "Junior Full Stack Engineer",
+        duration: "April 2020 - July 2020",
       },
     ],
   };
@@ -104,37 +89,17 @@ const education = {
     icon: "/assets/resume/cap.svg",
     title: "My education",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+      "My educational background laid the foundation for my technical expertise, combining theoretical knowledge with hands-on experience. I have pursued a comprehensive curriculum that enabled me to develop skills in software development, system design, and advanced programming languages.",
     items: [
       {
-        institution: "Online Course Platform",
-        degree: "Full Stack Web Development Bootcamp",
-        duration: "2023",
+        institution: "Algonquin College",
+        degree: "Computer Science",
+        duration: "May 2019 - December 2021",
       },
       {
-        institution: "Codecademy",
-        degree: "Front-end Track",
-        duration: "2022",
-      },
-      {
-        institution: "Online Course",
-        degree: "Programming Course",
-        duration: "2020 - 2021",
-      },
-      {
-        institution: "Tech Institute",
-        degree: "Certified Web Developer",
-        duration: "2019",
-      },
-      {
-        institution: "Design School",
-        degree: "Diploma in Graphic Design",
-        duration: "2016 - 2018",
-      },
-      {
-        institution: "Community College",
-        degree: "Associate Degree in Computer Science",
-        duration: "2014 - 2016",
+        institution: "Saraswati Modern Senior Secondary School",
+        degree: "High School ",
+        duration: "April 2016 - March ",
       },
     ],
   };
@@ -143,8 +108,16 @@ const education = {
 const skills = {
     title: "My skills",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+      "Here are the skills I am proficient in and have worked extensively on, ranging from backend and frontend development to cloud infrastructure and DevOps tools.",
     skillList: [
+      {
+        icon: < FaJava/>,
+        name: "Java",
+      },
+      {
+        icon: <FaPython />,
+        name: "Python",
+      },
       {
         icon: <FaHtml5 />,
         name: "html 5",
@@ -178,14 +151,6 @@ const skills = {
         name: "figma",
       },
       {
-        icon: < FaJava/>,
-        name: "Java",
-      },
-      {
-        icon: <FaPython />,
-        name: "Python",
-      },
-      {
         icon: <FaDocker />,
         name: "Docker",
       },
@@ -207,6 +172,34 @@ const skills = {
       },
     ],
   };
+
+  // certifications data
+  const certifications = {
+    title: "My Certifications",
+    description:
+      "I have earned certifications that showcase my expertise and commitment to continuous learning in the tech industry.",
+    items: [
+      {
+        name: "Machine Learning with Python",
+        issuingOrganization: "FreeCodeCamp",
+        link: "",
+        duration: "Issued: September 2023",
+      },
+      {
+        name: "Certified Java Developer",
+        issuingOrganization: "W3 Schools",
+        link: "",
+        duration: "Issued: August 2024",
+      },
+      {
+        name: "Software Engineer Certification",
+        issuingOrganization: "HackerRank",
+        link: "",
+        duration: "Issued: August 2024",
+      },
+    ],
+  };
+  
   
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs';
 import { Tooltip, TooltipContent,TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -232,6 +225,7 @@ const MyResume = () => {
             <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
               <TabsTrigger value="experience">Experience</TabsTrigger>
               <TabsTrigger value="education">Education</TabsTrigger>
+              <TabsTrigger value="certifications">Certifications</TabsTrigger>
               <TabsTrigger value="skills">Skills</TabsTrigger>
               <TabsTrigger value="about">About me</TabsTrigger>
             </TabsList>
@@ -333,6 +327,52 @@ const MyResume = () => {
                   </ul>
                 </div>
               </TabsContent>
+
+              {/* certifications */}
+<TabsContent value="certifications" className="w-full h-full">
+  <div className="flex flex-col gap-[30px] text-center xl:text-left">
+    <h3 className="text-4xl font-bold">{certifications.title}</h3>
+    <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+      {certifications.description}
+    </p>
+    <ScrollArea className="h-[400px]">
+      <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+        {certifications.items.map((item, index) => {
+          return (
+            <li
+              key={index}
+              className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 relative"
+            >
+              <span className="text-accent">{item.duration}</span>
+              <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                {item.name}
+              </h3>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex items-center gap-3">
+                  {/* dot */}
+                  <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                  <p className="text-white/60">{item.issuingOrganization}</p>
+                </div>
+                <Link href={item.link} target="_blank" rel="noopener noreferrer">
+                  <TooltipProvider delayDuration={100}>
+                    <Tooltip>
+                      <TooltipTrigger className="w-[50px] h-[50px] rounded-full bg-white/5 flex justify-center items-center group">
+                        <FaArrowRight className="text-white text-2xl group-hover:text-accent" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>View Certificate</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </Link>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </ScrollArea>
+  </div>
+</TabsContent>
   
               {/* about */}
               <TabsContent
