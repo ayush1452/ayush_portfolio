@@ -1,9 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
 import {
   Select,
   SelectContent,
@@ -13,8 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const info = [
   {
@@ -34,9 +34,49 @@ const info = [
   },
 ];
 
-import { motion } from "framer-motion";
-
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSelectChange = (value) => {
+    setFormData({ ...formData, service: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        alert("Message sent successfully!");
+      } else {
+        alert("Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("There was an error sending your message.");
+    }
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -50,41 +90,71 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+              onSubmit={handleSubmit}
+            >
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-white/60">
-                Get in touch with me for collaborations, inquiries, or any questions—let's work together to bring your ideas to life!
+                Get in touch with me for collaborations, inquiries, or any
+                questions—let's work together to bring your ideas to life!
               </p>
-              {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input
+                  name="firstname"
+                  type="text"
+                  placeholder="Firstname"
+                  onChange={handleChange}
+                />
+                <Input
+                  name="lastname"
+                  type="text"
+                  placeholder="Lastname"
+                  onChange={handleChange}
+                />
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Email address"
+                  onChange={handleChange}
+                />
+                <Input
+                  name="phone"
+                  type="text"
+                  placeholder="Phone number"
+                  onChange={handleChange}
+                />
               </div>
-              {/* select */}
-              <Select>
+              <Select onValueChange={handleSelectChange}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Backend Development</SelectItem>
-                    <SelectItem value="cst">DevOps and Automation</SelectItem>
-                    <SelectItem value="mst">Cloud Computing</SelectItem>
-                    <SelectItem value="mst">GenAI & LLM</SelectItem>
-                    <SelectItem value="mst">Fullstac Web Development</SelectItem>
+                    <SelectItem value="Backend Development">
+                      Backend Development
+                    </SelectItem>
+                    <SelectItem value="DevOps and Automation">
+                      DevOps and Automation
+                    </SelectItem>
+                    <SelectItem value="Cloud Computing">
+                      Cloud Computing
+                    </SelectItem>
+                    <SelectItem value="GenAI & LLM">GenAI & LLM</SelectItem>
+                    <SelectItem value="Fullstack Web Development">
+                      Fullstack Web Development
+                    </SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              {/* textarea */}
               <Textarea
+                name="message"
                 className="h-[200px]"
                 placeholder="Type your message here."
+                onChange={handleChange}
               />
-              {/* btn */}
-              <Button size="md" className="max-w-40">
+              <Button type="submit" size="md" className="max-w-40">
                 Send message
               </Button>
             </form>
