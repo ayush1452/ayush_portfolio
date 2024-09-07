@@ -44,6 +44,8 @@ const Contact = () => {
     message: "",
   });
 
+  const [status, setStatus] = useState(""); // For handling form submission status
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -54,24 +56,37 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus("sending");
+
+    const formDataToSend = new FormData();
+    for (const key in formData) {
+      formDataToSend.append(key, formData[key]);
+    }
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      const response = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formDataToSend).toString(),
       });
 
-      const data = await response.json();
-
-      if (response.status === 200) {
+      if (response.ok) {
+        setStatus("success");
         alert("Message sent successfully!");
+        setFormData({
+          firstname: "",
+          lastname: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
       } else {
+        setStatus("error");
         alert("Failed to send message.");
       }
     } catch (error) {
+      setStatus("error");
       console.error("Error:", error);
       alert("There was an error sending your message.");
     }
@@ -104,24 +119,28 @@ const Contact = () => {
                   name="firstname"
                   type="text"
                   placeholder="Firstname"
+                  value={formData.firstname}
                   onChange={handleChange}
                 />
                 <Input
                   name="lastname"
                   type="text"
                   placeholder="Lastname"
+                  value={formData.lastname}
                   onChange={handleChange}
                 />
                 <Input
                   name="email"
                   type="email"
                   placeholder="Email address"
+                  value={formData.email}
                   onChange={handleChange}
                 />
                 <Input
                   name="phone"
                   type="text"
                   placeholder="Phone number"
+                  value={formData.phone}
                   onChange={handleChange}
                 />
               </div>
@@ -152,29 +171,28 @@ const Contact = () => {
                 name="message"
                 className="h-[200px]"
                 placeholder="Type your message here."
+                value={formData.message}
                 onChange={handleChange}
               />
               <Button type="submit" size="md" className="max-w-40">
-                Send message
+                {status === "sending" ? "Sending..." : "Send message"}
               </Button>
             </form>
           </div>
           {/* info */}
           <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
             <ul className="flex flex-col gap-10">
-              {info.map((item, index) => {
-                return (
-                  <li key={index} className="flex items-center gap-6">
-                    <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
-                      <div className="text-[28px]">{item.icon}</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white/60">{item.title}</p>
-                      <h3 className="text-xl">{item.description}</h3>
-                    </div>
-                  </li>
-                );
-              })}
+              {info.map((item, index) => (
+                <li key={index} className="flex items-center gap-6">
+                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
+                    <div className="text-[28px]">{item.icon}</div>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-white/60">{item.title}</p>
+                    <h3 className="text-xl">{item.description}</h3>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
