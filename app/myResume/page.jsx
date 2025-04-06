@@ -30,7 +30,7 @@ const about = {
       },
       {
         fieldName: "Phone",
-        fieldValue: "(+1) 819 328 4927",
+        fieldValue: "(+1) 819 328-4927, (+91) 83600-85994",
       },
       {
         fieldName: "Experience",
